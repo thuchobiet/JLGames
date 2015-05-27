@@ -117,7 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -125,8 +124,33 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TheloaiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GAME.cs">
+      <DependentUpon>AllModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QUEHUONG.cs">
+      <DependentUpon>AllModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\THELOAI.cs">
+      <DependentUpon>AllModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -193,6 +217,23 @@
     <Content Include="font-awesome\scss\_rotated-flipped.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="Models\AllModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AllModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AllModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AllModel.edmx</DependentUpon>
+      <LastGenOutput>AllModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AllModel.edmx.diagram">
+      <DependentUpon>AllModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\AllModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AllModel.edmx</DependentUpon>
+      <LastGenOutput>AllModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cbpAnimatedHeader.js" />
     <Content Include="Scripts\classie.js" />
@@ -226,6 +267,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Theloai\Create.cshtml" />
+    <Content Include="Views\Theloai\Delete.cshtml" />
+    <Content Include="Views\Theloai\Details.cshtml" />
+    <Content Include="Views\Theloai\Edit.cshtml" />
+    <Content Include="Views\Theloai\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
