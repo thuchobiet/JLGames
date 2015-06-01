@@ -122,11 +122,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TheloaiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACCOUNT.cs">
+      <DependentUpon>AllModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AllModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -158,8 +162,11 @@
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\classic.css" />
     <Content Include="Content\creative.css" />
     <Content Include="Content\fancybox.css" />
+    <Content Include="Content\sb-admin-rtl.css" />
+    <Content Include="Content\sb-admin.css" />
     <Content Include="Content\templatemo_style.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome\css\font-awesome.css" />
@@ -168,6 +175,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\arrow-left.png" />
+    <Content Include="Images\arrow-right.png" />
     <Content Include="Images\blank.gif" />
     <Content Include="Images\fancybox_loading%402x.gif" />
     <Content Include="Images\fancybox_loading.gif" />
@@ -183,6 +192,7 @@
     <Content Include="Images\quehuong\quehuong2.JPG" />
     <Content Include="Images\quehuong\quehuong3.jpg" />
     <Content Include="Images\quehuong\quehuong4.jpg" />
+    <Content Include="Images\search.png" />
     <Content Include="Images\toi_header.JPG" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -237,10 +247,14 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cbpAnimatedHeader.js" />
     <Content Include="Scripts\classie.js" />
+    <Content Include="Scripts\createlinks.js" />
     <Content Include="Scripts\creative.js" />
     <Content Include="Scripts\fancy.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.columns-1.0.min.js" />
+    <Content Include="Scripts\jquery.confirm.min.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.fittext.js" />
     <Content Include="Scripts\jquery.js" />
@@ -272,6 +286,13 @@
     <Content Include="Views\Theloai\Details.cshtml" />
     <Content Include="Views\Theloai\Edit.cshtml" />
     <Content Include="Views\Theloai\Index.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Tongquan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

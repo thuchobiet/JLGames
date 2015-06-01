@@ -1,23 +1,30 @@
-﻿@model CaBlog.Models.THELOAI
+﻿@model CaBlog.Models.ACCOUNT
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>THELOAI</h4>
+    <h4>ACCOUNT</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ten)
+            @Html.DisplayNameFor(model => model.username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ten)
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
         </dd>
 
         <dt>
@@ -28,6 +35,14 @@
             @Html.DisplayFor(model => model.ngaytao)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.hople)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hople)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
@@ -35,7 +50,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Quay Lại", "Index")
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

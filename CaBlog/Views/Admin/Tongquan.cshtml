@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Tongquan";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    
+    //Get data
+    int slGame = ViewBag.slGame;
+    int slTheloai = ViewBag.slTheloai;
+    int slAccount = ViewBag.slAccount;
+    
+}
+
+<h2>Thống Kê</h2>
+
+<div class="row">    
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-gamepad fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@slGame</div>
+                        <div>Games</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index","Game")">
+                <div class="panel-footer">
+                    <span class="pull-left">Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">                        
+                        <i class="fa fa-briefcase fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@slTheloai</div>
+                        <div>Thể Loại</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index","Theloai")">
+                <div class="panel-footer">
+                    <span class="pull-left">Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-male fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@slAccount</div>
+                        <div>Account</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Index","Admin")">
+                <div class="panel-footer">
+                    <span class="pull-left">Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

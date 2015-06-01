@@ -46,36 +46,35 @@ namespace CaBlog.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[ValidateAntiForgeryToken]
         [HttpPost]
-        
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="id,ten,ngaytao")] THELOAI theloai)
         {
-            theloai.ngaytao = DateTime.Now;
-
-            /*
-            if (ModelState.IsValid)
-            {
-                db.THELOAIs.Add(theloai);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            */
-
             
-
-
-            if (!string.IsNullOrEmpty(theloai.ten))
+            try
             {
-                var item = from i in db.THELOAIs
-                           where i.ten == theloai.ten
-                           select i;
-                if (item != null)
+                if (ModelState.IsValid)
                 {
+                    var d = from t in db.THELOAIs
+                            where t.ten == theloai.ten.Trim()
+                            select t;
+                    
+                    if (d.Count() > 0)
+                        throw new Exception("The name was duplicated!");
+
                     db.THELOAIs.Add(theloai);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
-
+            catch(DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+           
             return View(theloai);
         }
 
@@ -134,6 +133,25 @@ namespace CaBlog.Controllers
             db.THELOAIs.Remove(theloai);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        
+        public JsonResult GetAll()
+        {
+            var lst = db.THELOAIs.ToList();
+            List<object> result = new List<object>();
+
+            foreach(THELOAI tl in lst)
+            {
+                string editlink = string.Format("<a title='Chỉnh Sửa' href='/Theloai/Edit/{0}'><i class='fa fa-pencil-square-o'></i></a>", tl.id);
+                string detaillink = string.Format("<a title='Xem' href='/Theloai/Details/{0}'><i class='fa fa-file-text'></i></a>", tl.id);                
+                string deletellink = string.Format("<a id='{0}' title='Xóa' href='/Theloai/Delete/{0}' onclick='return confirm(' you want to delete?');'><i class='fa fa-times'></i></a>", tl.id);
+                //string deletellink = string.Format("<a id='{0}' title='Xóa' href='#'><i class='fa fa-times'></i></a>", tl.id);
+                string action = string.Format("{0} | {1} | {2}",editlink,detaillink,deletellink);
+                
+                result.Add(new { ten  = tl.ten, ngaytao = tl.ngaytao.ToString("dd-MM-yyyy HH:mm:ss"), action = action});
+            }
+
+            return Json(result,JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
