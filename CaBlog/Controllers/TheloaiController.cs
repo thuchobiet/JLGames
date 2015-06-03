@@ -10,6 +10,7 @@ using CaBlog.Models;
 
 namespace CaBlog.Controllers
 {
+    [Authorize]
     public class TheloaiController : Controller
     {
         private JLBLOGEntities db = new JLBLOGEntities();
@@ -134,22 +135,44 @@ namespace CaBlog.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
-        public JsonResult GetAll()
+
+        [HttpPost]
+        public JsonResult DeleteAjax(int id)
+        {
+            object result;
+            THELOAI theloai = db.THELOAIs.Find(id);
+            if (theloai == null)
+            {
+                result = new { status = false, message = "Lỗi ID không tồn tại" };
+            }
+
+            db.THELOAIs.Remove(theloai);
+            db.SaveChanges();
+            
+            result = new { status = true, message = Url.Action("Index","Theloai") };
+            
+            return Json(result);
+        }
+
+
+        public JsonResult GetAll(int current = 1, int rowCount = 10)
         {
             var lst = db.THELOAIs.ToList();
-            List<object> result = new List<object>();
+            int total = db.THELOAIs.Count();
+            List<object> lsdata = new List<object>();
 
-            foreach(THELOAI tl in lst)
+            foreach (THELOAI tl in lst)
             {
-                string editlink = string.Format("<a title='Chỉnh Sửa' href='/Theloai/Edit/{0}'><i class='fa fa-pencil-square-o'></i></a>", tl.id);
-                string detaillink = string.Format("<a title='Xem' href='/Theloai/Details/{0}'><i class='fa fa-file-text'></i></a>", tl.id);                
-                string deletellink = string.Format("<a id='{0}' title='Xóa' href='/Theloai/Delete/{0}' onclick='return confirm(' you want to delete?');'><i class='fa fa-times'></i></a>", tl.id);
-                //string deletellink = string.Format("<a id='{0}' title='Xóa' href='#'><i class='fa fa-times'></i></a>", tl.id);
-                string action = string.Format("{0} | {1} | {2}",editlink,detaillink,deletellink);
-                
-                result.Add(new { ten  = tl.ten, ngaytao = tl.ngaytao.ToString("dd-MM-yyyy HH:mm:ss"), action = action});
+                lsdata.Add(new { id = tl.id, ten = tl.ten, ngaytao = tl.ngaytao.ToString("dd-MM-yyyy HH:mm:ss") });
             }
+
+            object result = new
+            {
+                current = current,
+                rowCount = rowCount,
+                rows = lsdata,
+                total = total                
+            };
 
             return Json(result,JsonRequestBehavior.AllowGet);
         }

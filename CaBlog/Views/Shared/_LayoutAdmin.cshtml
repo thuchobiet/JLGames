@@ -18,6 +18,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
     <div id="wrapper">
@@ -31,94 +32,166 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="@Url.Action("Tongquan","Admin")"><i class="fa fa-home"></i> JackLu's Blog</a>
+                <a class="navbar-brand" href="@Url.Action("Index","Admin")"><i class="fa fa-home"></i> JackLu's Blog</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-user"></i> Jack Lu <b class="caret"></b>
+                        <i class="fa fa-user"></i> Chào Admin <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="@Url.Action("Index","Account")"><i class="fa fa-fw fa-gear"></i> Đổi mật khẩu</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="@Url.Action("Logout","Admin")"><i class="fa fa-fw fa-power-off"></i> Đăng Xuất</a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
 
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="@Url.Action("Tongquan","Admin")"><i class="fa fa-fw fa-dashboard"></i> Tổng Quan</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#Game"><i class="fa fa-gamepad"></i> Game <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="Game" class="collapse">
-                            <li>
-                                <a href="#"><i class="fa fa-bars"></i> Tất Cả</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-plus-circle"></i> Thêm Game Mới</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#Theloai"><i class="fa fa-briefcase"></i> Thể Loại <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="Theloai" class="collapse">
-                            <li>
-                                <a href="@Url.Action("Index","Theloai")""><i class=" fa fa-bars"></i> Tất Cả</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Create","Theloai")"><i class="fa fa-plus-circle"></i> Thêm Thể Loại</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#Account"><i class="fa fa-male"></i> Account <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="Account" class="collapse">
-                            <li>
-                                <a href="@Url.Action("Index","Admin")"><i class="fa fa-bars"></i> Tất Cả</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Create","Admin")"><i class="fa fa-plus-circle"></i> Thêm Account Mới</a>
-                            </li>
-                        </ul>
-                    </li>
+
+                    @if (ViewContext.RouteData.Values["Controller"].Equals("Admin") && ViewContext.RouteData.Values["Action"].Equals("Index"))
+                    {
+                        <li class="active">
+                            <a href="@Url.Action("Index","Admin")"><i class="fa fa-fw fa-dashboard"></i> Tổng Quan</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Index","Admin")"><i class="fa fa-fw fa-dashboard"></i> Tổng Quan</a>
+                        </li>
+                    }
+
+                    @if (ViewContext.RouteData.Values["Controller"].Equals("Game"))
+                    {
+                        <li class="active">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#Game"><i class="fa fa-gamepad"></i> Game <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="Game" class="collapse in">
+                                <li>
+                                    <a href="#"><i class="fa fa-bars"></i> Tất Cả</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-plus-circle"></i> Thêm Game Mới</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#Game"><i class="fa fa-gamepad"></i> Game <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="Game" class="collapse">
+                                <li>
+                                    <a href="#"><i class="fa fa-bars"></i> Tất Cả</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-plus-circle"></i> Thêm Game Mới</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (ViewContext.RouteData.Values["Controller"].Equals("Theloai"))
+                    {
+                        <li class="active">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#Theloai"><i class="fa fa-briefcase"></i> Thể Loại <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="Theloai" class="collapse in">
+                                <li>
+                                    <a href="@Url.Action("Index","Theloai")"><i class=" fa fa-bars"></i> Tất Cả</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create","Theloai")"><i class="fa fa-plus-circle"></i> Thêm Thể Loại</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#Theloai"><i class="fa fa-briefcase"></i> Thể Loại <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="Theloai" class="collapse">
+                                <li>
+                                    <a href="@Url.Action("Index","Theloai")"><i class=" fa fa-bars"></i> Tất Cả</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create","Theloai")"><i class="fa fa-plus-circle"></i> Thêm Thể Loại</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (ViewContext.RouteData.Values["Controller"].Equals("Account"))
+{
+                        <li class="active">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#Account"><i class="fa fa-male"></i> Account <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="Account" class="collapse in">
+                                <li>
+                                    <a href="@Url.Action("Index", "Account")"><i class="fa fa-bars"></i> Tất Cả</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create", "Account")"><i class="fa fa-plus-circle"></i> Thêm Account Mới</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#Account"><i class="fa fa-male"></i> Account <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="Account" class="collapse">
+                                <li>
+                                    <a href="@Url.Action("Index", "Account")"><i class="fa fa-bars"></i> Tất Cả</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create", "Account")"><i class="fa fa-plus-circle"></i> Thêm Account Mới</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
+
         </nav>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Content-->
                 <div class="row">
-                    <div id="viewContent" class="col-lg-12">                        
-                            @RenderBody()                        
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">@RenderSection("title")</h3>
+                            </div>
+                            <div class="panel-body">
+                                @RenderBody()
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- /#page-wrapper -->
         </div>
+    </div>
+    <!-- jQuery -->
+    @Scripts.Render("~/bundles/admin")
+    @RenderSection("scripts", required: false)
 
-        <!-- jQuery -->
-        @Scripts.Render("~/bundles/admin")
-        @RenderSection("scripts", required: false)
-
-        <script>
-            $(".nav li").on("click", function () {
-                $(".nav li").removeClass("active");
-                $(this).addClass("active");
-            });
-            $(document).tooltip();
-        </script>
+    <script>
+        $(".nav li").on("click", function () {
+            $(".nav li").removeClass("active");
+            $(this).addClass("active");
+        });
+        $(document).tooltip();
+    </script>
 </body>
 </html>

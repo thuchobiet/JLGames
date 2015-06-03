@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="JLBLOGModel.QUEHUONG" Width="1.5" PointX="5.125" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JLBLOGModel.THELOAI" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="JLBLOGModel.FK_GAME_THELOAI" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="JLBLOGModel.ACCOUNT" Width="1.5" PointX="7.25" PointY="1.25" />
+        <EntityTypeShape EntityType="JLBLOGModel.ACCOUNT" Width="1.5" PointX="7.125" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

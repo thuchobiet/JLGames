@@ -10,10 +10,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="username" Type="nchar" MaxLength="10" />
-          <Property Name="password" Type="nchar" MaxLength="20" />
-          <Property Name="ngaytao" Type="datetime" />
-          <Property Name="hople" Type="bit" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="passwordhash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="saltvalue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="dangsudung" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="GAME">
           <Key>
@@ -136,10 +137,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="ngaytao" Type="DateTime" Precision="3" />
-          <Property Name="hople" Type="Boolean" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="passwordhash" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="saltvalue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dangsudung" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -184,9 +186,10 @@
           <EntitySetMapping Name="ACCOUNTs">
             <EntityTypeMapping TypeName="JLBLOGModel.ACCOUNT">
               <MappingFragment StoreEntitySet="ACCOUNT">
-                <ScalarProperty Name="hople" ColumnName="hople" />
+                <ScalarProperty Name="dangsudung" ColumnName="dangsudung" />
                 <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="saltvalue" ColumnName="saltvalue" />
+                <ScalarProperty Name="passwordhash" ColumnName="passwordhash" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

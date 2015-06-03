@@ -5,34 +5,32 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Create</h2>
+@section title{
+    Thể Loại
+}
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>THỂ LOẠI</h4>
-        <hr />
+    <div class="form-horizontal">        
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(m => m.ngaytao, new { Value = DateTime.Now });
+        @Html.HiddenFor(m => m.ngaytao, new { Value = DateTime.Now })
+        
         <div class="form-group">
-            @Html.Label("Tên", new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Tên thể loại</label>            
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ten)
+                @Html.TextBoxFor(model => model.ten, new { @class = "form-control", placeholder = "Nhập tên thể loại"})
                 @Html.ValidationMessageFor(model => model.ten)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" class="btn btn-success">Tạo</button>
+                <a role="button" class="btn btn-info" href="@Url.Action("Index","Theloai")">Hủy</a>
             </div>
         </div>
     </div>    
    
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

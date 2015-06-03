@@ -16,8 +16,9 @@ namespace CaBlog.Models
     {
         public int id { get; set; }
         public string username { get; set; }
-        public string password { get; set; }
-        public Nullable<System.DateTime> ngaytao { get; set; }
-        public bool hople { get; set; }
+        public string passwordhash { get; set; }
+        public string saltvalue { get; set; }
+        public System.DateTime ngaytao { get; set; }
+        public bool dangsudung { get; set; }
     }
 }
