@@ -1,0 +1,52 @@
+﻿@model CaBlog.Models.ACCOUNT
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section title{
+    Account
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.saltvalue)
+        @Html.HiddenFor(model => model.ngaytao, new { Value = DateTime.Now })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên đăng nhập</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.username, new { @class = "form-control", placeholder = "Nhập tên đăng nhập"})
+                @Html.ValidationMessageFor(model => model.username)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mật khẩu</label>
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.passwordhash, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(model => model.passwordhash)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Kích Hoạt</label>
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.dangsudung, new { @class = "checkbox", @checked = true })
+                @Html.ValidationMessageFor(model => model.dangsudung)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success">Tạo</button>
+                <a role="button" class="btn btn-info" href="@Url.Action("Index","Account")">Hủy</a>
+            </div>
+        </div>
+    </div>
+}

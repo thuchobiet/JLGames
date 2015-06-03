@@ -1,0 +1,54 @@
+﻿@model CaBlog.Models.ACCOUNT
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section title{
+    Account
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">        
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.saltvalue)
+        @Html.HiddenFor(model => model.ngaytao)
+        @Html.HiddenFor(model => model.passwordhash)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên Đăng Nhập</label>
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.username, new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.username)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">Mật Khẩu Mới</label>
+            <div class="col-md-5">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Kích Hoạt</label>
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.dangsudung)
+                @Html.ValidationMessageFor(model => model.dangsudung)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success">Lưu</button>
+                <a href="@Url.Action("Index","Account")" class="btn btn-info" role="button">Hủy</a>
+            </div>
+        </div>
+
+    </div>
+}
