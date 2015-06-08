@@ -50,27 +50,7 @@ namespace CaBlog.Controllers
 
             return View();
         }
-
-        public ActionResult Game()
-        {
-            return View();
-        }
-
-        // GET: /Theloai/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            GAME game = db.GAMEs.Find(id);
-            if (game == null)
-            {
-                return HttpNotFound();
-            }
-            return View(game);
-        }
-
+               
 
     }
 }
