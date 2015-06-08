@@ -1,0 +1,68 @@
+﻿@model CaBlog.Models.GAME
+
+@{
+    ViewBag.Title = "Chi Tiết";
+}
+
+@section style{
+    <style>
+        #page-top > header {
+            min-height: 300px;
+        }
+
+        #games {
+            color: #34383d;
+        }
+
+        #games > div > div > div > h3 {
+            color: red;
+        }
+    </style>
+}
+
+@section header{
+    <h3>Kho Games</h3>
+}
+
+<section id="games">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>@Model.ten</h2>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 text-center">
+                <img src="@Model.anhcover" alt="@Model.ten">
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <p>@Model.noidung</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3>Cấu Hình</h3>
+                <span>@Model.yeucauhethong</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3>LINK</h3>
+                <span>@Model.link</span>
+            </div>
+        </div>
+    </div>
+</section>
