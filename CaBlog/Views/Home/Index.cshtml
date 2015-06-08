@@ -1,35 +1,19 @@
-﻿@{
+﻿@model CaBlog.Models.CustomModel
+
+@{
     Layout = "";
 }
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Kho game,Blog">
+    <meta name="author" content="JackLu">
+    <title>@ViewBag.Title - JackLu's Blog</title>
 
-    <title>Jack Lu's Blog</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.min.css")" type="text/css">
-
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="@Url.Content("~/font-awesome/css/font-awesome.min.css")" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/animate.min.css")" type="text/css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="@Url.Content("~/Content/creative.css")" type="text/css">
-    <link rel="stylesheet" href="@Url.Content("~/Content/templatemo_style.css")" type="text/css">
-    <link rel="stylesheet" href="@Url.Content("~/Content/fancybox.css")" type="text/css">
+    @Styles.Render("~/Content/css")
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,12 +22,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-
 </head>
-
 <body id="page-top">
 
+    <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> JackLu <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
+                <a class="navbar-brand page-scroll" href="/"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> JackLu <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,6 +57,9 @@
                     <li>
                         <a class="page-scroll" href="#lienhe">Liên hệ</a>
                     </li>
+                    <li>
+                        <a href="/Admin/Index" style="padding-top: 5px;" title="Vào Trang Quản Trị" ><i class="fa fa-eye fa-3x wow bounceIn" data-wow-delay=".5s"></i></a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -82,17 +67,17 @@
         <!-- /.container-fluid -->
     </nav>
 
+    <!-- Page Content -->
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <p>If happiness could be brought, few of us could pay the price.</p>
-                <em>"Nếu hạnh phúc có thể mua, cái giá của nó chẳng mấy ai trả được"</em>
+                <p>@Model.lsDanhNgon.First().noidung_en</p>
+                <em>@Model.lsDanhNgon.First().noidung_vn</em>
                 <hr>
-                <h3>-Khuyết Danh-</h3>
+                <h3>@Model.lsDanhNgon.First().tacgia</h3>
             </div>
         </div>
     </header>
-
 
     <section class="bg-primary" id="dayla">
         <div class="container">
@@ -101,7 +86,7 @@
                     <h2 class="section-heading">Kho game dành cho mọi người</h2>
                     <!--<hr class="light">-->
                     <p class="text-faded">Nếu bạn ưa thích một tựa game, hãy mua nó để giúp đỡ các nhà làm game trong tương lai!</p>
-                    <a href="@Url.Action("Index","Game")" class="btn btn-default btn-xl">Down thôi</a>
+                    <a href="@Url.Action("Index", "GamesList")" class="btn btn-default btn-xl">Down thôi</a>
                 </div>
             </div>
         </div>
@@ -112,7 +97,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <a href="@Url.Action("Index","Game")"><h2 class="section-heading">Game Mới</h2></a>
+                    <a href="@Url.Action("NewGames","GamesList")"><h2 class="section-heading">Game Mới</h2></a>
                     <hr class="primary">
                 </div>
             </div>
@@ -121,129 +106,26 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Call Of Duty Black Ops 3.jpg")" alt="Call Of Duty Black Ops 3">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Call Of Duty Black Ops 3</h3>
-                        <p>Call of Duty Black Ops III (Call of Duty Black Ops 3, Call of Duty 2015, Call of Duty 12) là game bắn súng góc nhìn thứ nhất, là phiên bản thứ 12 trong seri Call of Duty. Game đưa người chơi vào chiến trường mạnh mẽ của tương lai, nơi mà công nghệ sinh học đã cho phép tạo ra những người lính công nghệ cao, những quân nhân nửa người nửa robot với những khả năng vượt trội.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Just Cause 3.jpg")" alt="Just Cause 3">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Just Cause 3</h3>
-                        <p>Just Cause 3 là game hành động phiêu lưu thế giới mở được phát triển bởi Avalanche Studios và phát hành bởi Square Enix. Với hơn 400 dặm vuông và hoàn toàn tự do từ trên trời cho đến đáy biển, một kho của các loại vũ khí, công cụ và các loại xe, Just Cause 3 sẽ mở ra một sự hỗn loạn nhất mà các bạn có thể tưởng tượng.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Overlord Fellowship of Evil.jpg")" alt="Overlord Fellowship of Evil">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Overlord Fellowship of Evil</h3>
-                        <p>Overlord Fellowship of Evil là game nhập vai hành động đầy hài hước. Các bạn vào vai chúa quỷ, hiện thân của cái ác và phá hủy tất cả những gì được gọi là tốt trong một cách hài hước với sự hỗ trợ của những tay sai hùng mạnh, điên cuồng và đôi khi ngớ ngẩn.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Tom Clancys Rainbow Six Siege.jpg")" alt="Tom Clancys Rainbow Six Siege">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Tom Clancys Rainbow Six Siege</h3>
-                        <p>Tom Clancy's Rainbow Six Siege là game bắn súng góc nhìn thứ nhất của Ubisoft. Được coi là người kế nhiệm của Tom Clancy's Rainbow 6: Patriots vốn đã bị hủy. Cũng giống như các tựa game khác trong series, game sẽ tập trung nhiều vào teamplay và chủ nghĩa hiện thực. Tuy nhiên, có sự khác biệt lớn đối với các phiên bản cũ hơn của trò chơi,  đó là tập trung cho multiplayer và môi trường bị phá hủy, tương tự như dòng Battlefield.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Call Of Duty Black Ops 3.jpg")" alt="Call Of Duty Black Ops 3">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Call Of Duty Black Ops 3</h3>
-                        <p>Call of Duty Black Ops III (Call of Duty Black Ops 3, Call of Duty 2015, Call of Duty 12) là game bắn súng góc nhìn thứ nhất, là phiên bản thứ 12 trong seri Call of Duty. Game đưa người chơi vào chiến trường mạnh mẽ của tương lai, nơi mà công nghệ sinh học đã cho phép tạo ra những người lính công nghệ cao, những quân nhân nửa người nửa robot với những khả năng vượt trội.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Just Cause 3.jpg")" alt="Just Cause 3">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Just Cause 3</h3>
-                        <p>Just Cause 3 là game hành động phiêu lưu thế giới mở được phát triển bởi Avalanche Studios và phát hành bởi Square Enix. Với hơn 400 dặm vuông và hoàn toàn tự do từ trên trời cho đến đáy biển, một kho của các loại vũ khí, công cụ và các loại xe, Just Cause 3 sẽ mở ra một sự hỗn loạn nhất mà các bạn có thể tưởng tượng.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Overlord Fellowship of Evil.jpg")" alt="Overlord Fellowship of Evil">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Overlord Fellowship of Evil</h3>
-                        <p>Overlord Fellowship of Evil là game nhập vai hành động đầy hài hước. Các bạn vào vai chúa quỷ, hiện thân của cái ác và phá hủy tất cả những gì được gọi là tốt trong một cách hài hước với sự hỗ trợ của những tay sai hùng mạnh, điên cuồng và đôi khi ngớ ngẩn.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="item-thumb">
-                            <div class="overlay">
-                                <div class="overlay-inner">
-                                    <a href="#page-top" class="view-detail">Chi Tiết...</a>
-                                </div>
-                            </div> <!-- /.overlay -->
-                            <img src="@Url.Content("~/Images/game/Tom Clancys Rainbow Six Siege.jpg")" alt="Tom Clancys Rainbow Six Siege">
-                        </div> <!-- /.item-thumb -->
-                        <h3>Tom Clancys Rainbow Six Siege</h3>
-                        <p>Tom Clancy's Rainbow Six Siege là game bắn súng góc nhìn thứ nhất của Ubisoft. Được coi là người kế nhiệm của Tom Clancy's Rainbow 6: Patriots vốn đã bị hủy. Cũng giống như các tựa game khác trong series, game sẽ tập trung nhiều vào teamplay và chủ nghĩa hiện thực. Tuy nhiên, có sự khác biệt lớn đối với các phiên bản cũ hơn của trò chơi,  đó là tập trung cho multiplayer và môi trường bị phá hủy, tương tự như dòng Battlefield.</p>
-                    </div> <!-- /.product-item -->
-                </div> <!-- /.col-md-3 -->
+                @foreach (var item in Model.lsGame)
+                {
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="item-thumb">
+                                <div class="overlay">
+                                    <div class="overlay-inner">
+                                        <a href="@Url.Content("~/GamesList/Details/" + @item.id)" class="view-detail">Chi Tiết...</a>
+                                    </div>
+                                </div> <!-- /.overlay -->
+                                <img src="@item.anhcover" alt="@item.ten">
+                            </div> <!-- /.item-thumb -->
+                            <h3>@item.ten</h3>
+                            <p>@item.noidung</p>
+                        </div> <!-- /.product-item -->
+                    </div> <!-- /.col-md-3 -->
+                }
 
                 <div style="float:right;margin-top:15px;">
-                    <a href="@Url.Action("Index","Game")" class="portfolio-box fancybox" data-fancybox-group="gallery">
+                    <a href="@Url.Action("Index","GamesList")" class="portfolio-box fancybox" data-fancybox-group="gallery">
                         <h3>Xem Thêm...</h3>
                     </a>
                 </div>
@@ -251,52 +133,28 @@
             </div>
         </div>
 
-
     </section>
 
     <section class="no-padding" id="quehuong">
         <div class="container-fluid">
             <div class="row no-gutter">
 
-                <div class="col-lg-4 col-sm-6">
-                    <a href="@Url.Content("~/Images/quehuong/quehuong1.jpg")" class="portfolio-box fancybox" data-fancybox-group="gallery">
-                        <img src="@Url.Content("~/Images/quehuong/quehuong1.jpg")" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Bình Ba
+                @foreach (var item in Model.lsQueHuong)
+                {
+
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="@item.anh" class="portfolio-box fancybox" data-fancybox-group="gallery">
+                            <img src="@item.anh" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded">
+                                        @item.ten
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="@Url.Content("~/Images/quehuong/quehuong2.jpg")" class="portfolio-box fancybox" data-fancybox-group="gallery">
-                        <img src="@Url.Content("~/Images/quehuong/quehuong2.jpg")" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Bình Ba
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-sm-6">
-                    <a href="@Url.Content("~/Images/quehuong/quehuong3.jpg")" class="portfolio-box fancybox" data-fancybox-group="gallery">
-                        <img src="@Url.Content("~/Images/quehuong/quehuong3.jpg")" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Bình Ba
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
+                        </a>
+                    </div>
+                }
 
             </div>
         </div>
@@ -306,7 +164,7 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Cảnh đẹp quê hương!</h2>
-                <a href="@Url.Action("Index","QuehuongController")" class="btn btn-default btn-xl wow tada">Xem!</a>
+                <a href="@Url.Action("QueHuong","Home")" class="btn btn-default btn-xl wow tada">Xem!</a>
             </div>
         </div>
     </aside>
@@ -314,54 +172,50 @@
     <section id="lienhe">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-lg-offset-2 text-center">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Liên hệ</h2>
                     <p>Mọi đóng góp ý kiến cho website, vui lòng liên hệ theo địa chỉ bên dưới</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2 col-lg-offset-3 text-center">
+                <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-twitter fa-3x wow bounceIn"></i>
                     <p><a href="https://twitter.com/dangkychua" class="twitter-follow-button" data-show-count="false">Follow #dangkychua</a></p>
                 </div>
 
-                <div class="col-md-2 text-center">
+                <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".5s"></i>
                     <p><a href="mailto:dangkychua@gmail.com">dangkychua@gmail.com</a></p>
                 </div>
-
-                <div class="col-md-2 text-center">
-                    <i class="fa fa-eye fa-3x wow bounceIn" data-wow-delay=".5s"></i>
-                    <p><a href="/Admin/Index">Vào Trang Quản Trị</a></p>
-                </div>
-
             </div>
         </div>
-
     </section>
 
-    <!-- jQuery -->
-    <script src="@Url.Content("~/Scripts/jquery.js")"></script>
+    <a href="#" class="jacklu-top">↑</a>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
-    <!-- Plugin JavaScript -->
-    <script src="@Url.Content("~/Scripts/jquery.easing.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/jquery.fittext.js")"></script>
-    <script src="@Url.Content("~/Scripts/wow.min.js")"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var offset = 220;
+            var duration = 500;
+            jQuery(window).scroll(function () {
+                if (jQuery(this).scrollTop() > offset) {
+                    jQuery('.jacklu-top').fadeIn(duration);
+                } else {
+                    jQuery('.jacklu-top').fadeOut(duration);
+                }
+            });
 
-    <!-- Custom Theme JavaScript -->
-    <script src="@Url.Content("~/Scripts/creative.js")"></script>
-    <script src="@Url.Content("~/Scripts/fancy.js")"></script>
-    <script src="@Url.Content("~/Scripts/jquery.mousewheel-3.0.6.pack.js")"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
             $(".fancybox").fancybox();
+            $(document).tooltip();
+            jQuery('.jacklu-top').click(function (event) {
+                event.preventDefault();
+                jQuery('html, body').animate({ scrollTop: 0 }, duration);
+                return false;
+            })
         });
+
     </script>
 
 </body>
-
 </html>

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CaBlog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,15 +10,37 @@ namespace CaBlog.Controllers
 {
     public class HomeController : Controller
     {
+
+        private JLBLOGEntities db = new JLBLOGEntities();
+
         public ActionResult Index()
         {
-            return View();
+            CustomModel resultModel = new CustomModel();
+
+             Random r = new Random();
+            //Get randowm danhngon
+            var lsDanhNgon = db.DANHNGONs.ToList().OrderBy(x=>r.Next()).Take(1);
+
+
+            //Get 8 new game order by created date
+            var lsGames = (from g in db.GAMEs
+                           orderby g.ngaytao descending
+                           select g).Take(8);
+
+            //Get 3 new quehuong collection
+            var lsQuehuongs = (from g in db.QUEHUONGs
+                               orderby g.ngaytao descending
+                               select g).Take(3);
+
+            resultModel.lsGame.AddRange(lsGames);
+            resultModel.lsQueHuong.AddRange(lsQuehuongs);
+            resultModel.lsDanhNgon.Add(lsDanhNgon.FirstOrDefault());
+
+            return View(resultModel);
         }
 
-        public ActionResult About()
+        public ActionResult QueHuong()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
@@ -26,5 +50,27 @@ namespace CaBlog.Controllers
 
             return View();
         }
+
+        public ActionResult Game()
+        {
+            return View();
+        }
+
+        // GET: /Theloai/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            GAME game = db.GAMEs.Find(id);
+            if (game == null)
+            {
+                return HttpNotFound();
+            }
+            return View(game);
+        }
+
+
     }
 }

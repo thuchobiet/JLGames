@@ -149,6 +149,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\GamesListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TheloaiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,6 +172,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AllModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomModel.cs" />
+    <Compile Include="Models\DANHNGON.cs">
+      <DependentUpon>AllModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GAME.cs">
       <DependentUpon>AllModel.tt</DependentUpon>
@@ -206,6 +211,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\arrow-left.png" />
     <Content Include="Images\arrow-right.png" />
+    <Content Include="Images\background-game.jpg" />
     <Content Include="Images\blank.gif" />
     <Content Include="Images\fancybox_loading%402x.gif" />
     <Content Include="Images\fancybox_loading.gif" />
@@ -216,7 +222,9 @@
     <Content Include="Images\game\Just Cause 3.jpg" />
     <Content Include="Images\game\Overlord Fellowship of Evil.jpg" />
     <Content Include="Images\game\Tom Clancys Rainbow Six Siege.jpg" />
+    <Content Include="Images\game_header.jpg" />
     <Content Include="Images\hatien_header.jpg" />
+    <Content Include="Images\login.png" />
     <Content Include="Images\quehuong\quehuong1.jpg" />
     <Content Include="Images\quehuong\quehuong2.JPG" />
     <Content Include="Images\quehuong\quehuong3.jpg" />
@@ -273,6 +281,7 @@
       <DependentUpon>AllModel.edmx</DependentUpon>
       <LastGenOutput>AllModel.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\zip.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cbpAnimatedHeader.js" />
     <Content Include="Scripts\classie.js" />
@@ -326,6 +335,11 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Home\QueHuong.cshtml" />
+    <Content Include="Views\Home\Game.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\GamesList\Index.cshtml" />
+    <Content Include="Views\GamesList\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

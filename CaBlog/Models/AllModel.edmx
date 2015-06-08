@@ -16,6 +16,16 @@
           <Property Name="ngaytao" Type="datetime" Nullable="false" />
           <Property Name="dangsudung" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="DANHNGON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="noidung_vn" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="noidung_en" Type="nvarchar(max)" />
+          <Property Name="tacgia" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ngaytao" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="GAME">
           <Key>
             <PropertyRef Name="id" />
@@ -24,10 +34,13 @@
           <Property Name="idtheloai" Type="int" Nullable="false" />
           <Property Name="ten" Type="nvarchar(max)" Nullable="false" />
           <Property Name="noidung" Type="nvarchar(max)" />
-          <Property Name="yeucauhethong" Type="nvarchar(max)" />
+          <Property Name="cauhinh" Type="nvarchar(max)" />
           <Property Name="link" Type="nvarchar(max)" />
           <Property Name="anhcover" Type="nvarchar(max)" />
           <Property Name="ngaytao" Type="datetime" Nullable="false" />
+          <Property Name="namphathanh" Type="int" />
+          <Property Name="diem" Type="int" />
+          <Property Name="screenshot" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="QUEHUONG">
           <Key>
@@ -63,6 +76,7 @@
         </Association>
         <EntityContainer Name="JLBLOGModelStoreContainer">
           <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DANHNGON" EntityType="Self.DANHNGON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GAME" EntityType="Self.GAME" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QUEHUONG" EntityType="Self.QUEHUONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
@@ -83,11 +97,14 @@
           <Property Name="idtheloai" Type="Int32" Nullable="false" />
           <Property Name="ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="yeucauhethong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="anhcover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="THELOAI" Relationship="Self.FK_GAME_THELOAI" FromRole="GAME" ToRole="THELOAI" />
+          <Property Name="cauhinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="namphathanh" Type="Int32" />
+          <Property Name="diem" Type="Int32" />
+          <Property Name="screenshot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="QUEHUONG">
           <Key>
@@ -131,6 +148,7 @@
             <End Role="GAME" EntitySet="GAMEs" />
           </AssociationSet>
           <EntitySet Name="ACCOUNTs" EntityType="JLBLOGModel.ACCOUNT" />
+          <EntitySet Name="DANHNGONs" EntityType="JLBLOGModel.DANHNGON" />
         </EntityContainer>
         <EntityType Name="ACCOUNT">
           <Key>
@@ -143,6 +161,16 @@
           <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dangsudung" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="DANHNGON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noidung_vn" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="noidung_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tacgia" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytao" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -152,11 +180,14 @@
           <EntitySetMapping Name="GAMEs">
             <EntityTypeMapping TypeName="JLBLOGModel.GAME">
               <MappingFragment StoreEntitySet="GAME">
+                <ScalarProperty Name="screenshot" ColumnName="screenshot" />
+                <ScalarProperty Name="diem" ColumnName="diem" />
+                <ScalarProperty Name="namphathanh" ColumnName="namphathanh" />
+                <ScalarProperty Name="cauhinh" ColumnName="cauhinh" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtheloai" ColumnName="idtheloai" />
                 <ScalarProperty Name="ten" ColumnName="ten" />
                 <ScalarProperty Name="noidung" ColumnName="noidung" />
-                <ScalarProperty Name="yeucauhethong" ColumnName="yeucauhethong" />
                 <ScalarProperty Name="link" ColumnName="link" />
                 <ScalarProperty Name="anhcover" ColumnName="anhcover" />
                 <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
@@ -191,6 +222,17 @@
                 <ScalarProperty Name="saltvalue" ColumnName="saltvalue" />
                 <ScalarProperty Name="passwordhash" ColumnName="passwordhash" />
                 <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANHNGONs">
+            <EntityTypeMapping TypeName="JLBLOGModel.DANHNGON">
+              <MappingFragment StoreEntitySet="DANHNGON">
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+                <ScalarProperty Name="tacgia" ColumnName="tacgia" />
+                <ScalarProperty Name="noidung_en" ColumnName="noidung_en" />
+                <ScalarProperty Name="noidung_vn" ColumnName="noidung_vn" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

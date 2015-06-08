@@ -29,5 +29,6 @@ namespace CaBlog.Models
         public virtual DbSet<QUEHUONG> QUEHUONGs { get; set; }
         public virtual DbSet<THELOAI> THELOAIs { get; set; }
         public virtual DbSet<ACCOUNT> ACCOUNTs { get; set; }
+        public virtual DbSet<DANHNGON> DANHNGONs { get; set; }
     }
 }

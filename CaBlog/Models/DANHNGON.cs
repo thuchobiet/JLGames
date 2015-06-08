@@ -12,20 +12,12 @@ namespace CaBlog.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class GAME
+    public partial class DANHNGON
     {
         public int id { get; set; }
-        public int idtheloai { get; set; }
-        public string ten { get; set; }
-        public string noidung { get; set; }
-        public string link { get; set; }
-        public string anhcover { get; set; }
+        public string noidung_vn { get; set; }
+        public string noidung_en { get; set; }
+        public string tacgia { get; set; }
         public System.DateTime ngaytao { get; set; }
-        public string cauhinh { get; set; }
-        public Nullable<int> namphathanh { get; set; }
-        public Nullable<int> diem { get; set; }
-        public string screenshot { get; set; }
-    
-        public virtual THELOAI THELOAI { get; set; }
     }
 }

@@ -1,130 +1,151 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kho game,Blog">
+    <meta name="author" content="JackLu">
     <title>@ViewBag.Title - JackLu's Blog</title>
-    @Styles.Render("~/Content/css")   
+
+    @Styles.Render("~/Content/css")
+    @RenderSection("style",required: false)
+
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body>
+<body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="/"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> JackLu <span class="glyphicon glyphicon-star" aria-hidden="true"></span></a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">                    
                     <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#gamesmenu">Kho Game <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="gamesmenu" class="collapse">
                             <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                                <a href="#"> Game mới</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                                <a href="#"> TPS - Bắn súng góc nhìn thứ 3</a>
                             </li>
                             <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                                <a href="#"> FPS - Bắn súng góc nhìn thứ nhất</a>
                             </li>
                             <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                                <a href="#"> Nhập vai</a>
                             </li>
                             <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
+                                <a href="#"> Phiêu lưu - Hành động</a>
+                            </li>
+                            <li>
+                                <a href="#"> Kinh Dị</a>
+                            </li>
+                            <li>
+                                <a href="#"> Khác</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="blog-home-1.html">Blog Home 1</a>
-                            </li>
-                            <li>
-                                <a href="blog-home-2.html">Blog Home 2</a>
-                            </li>
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
-                        </ul>
+
+                    <li>
+                        <a class="page-scroll" href="#quehuong">Quê Hương Tôi</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html">Pricing Table</a>
-                            </li>
-                        </ul>
+
+                    <li>
+                        <a class="page-scroll" href="#lienhe">Liên hệ</a>
                     </li>
+
+                    <li>
+                        <a href="/Admin/Index" style="padding-top: 5px;" title="Vào Trang Quản Trị"><i class="fa fa-eye fa-3x wow bounceIn" data-wow-delay=".5s"></i></a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
+        <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header Carousel -->
-    <section>
-        
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                @RenderSection("header",required:false)
+            </div>
+        </div>
+    </header>
+    <!-- Page Content -->
+    @RenderBody()
+    
+    <hr style="max-width:100%"/>
+
+    <section id="lienhe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Liên hệ</h2>
+                    <p>Mọi đóng góp ý kiến cho website, vui lòng liên hệ theo địa chỉ bên dưới</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-twitter fa-3x wow bounceIn"></i>
+                    <p><a href="https://twitter.com/dangkychua" class="twitter-follow-button" data-show-count="false">Follow #dangkychua</a></p>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".5s"></i>
+                    <p><a href="mailto:dangkychua@gmail.com">dangkychua@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Page Content -->
-    <div class="container">
-        <div>
-            @RenderBody()
-        </div>
-        <hr />
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading">Liên hệ</h2>
-                        <p>Mọi đóng góp ý kiến cho website, vui lòng liên hệ theo địa chỉ bên dưới</p>
-                    </div>
-                    <div class="col-lg-4 col-lg-offset-2 text-center">
-                        <i class="fa fa-twitter fa-3x wow bounceIn"></i>
-                        <p><a href="https://twitter.com/dangkychua" class="twitter-follow-button" data-show-count="false">Follow #dangkychua</a></p>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".5s"></i>
-                        <p><a href="mailto:dangkychua@gmail.com">dangkychua@gmail.com</a></p>
-                    </div>                  
-            </div>            
-        </footer>
-    </div>
+    <a href="#" class="jacklu-top">↑</a>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        jQuery(document).ready(function ($) {
+            var offset = 220;
+            var duration = 500;
+            jQuery(window).scroll(function () {
+                if (jQuery(this).scrollTop() > offset) {
+                    jQuery('.jacklu-top').fadeIn(duration);
+                } else {
+                    jQuery('.jacklu-top').fadeOut(duration);
+                }
+            });
+
+            $(".fancybox").fancybox();
+
+            jQuery('.jacklu-top').click(function (event) {
+                event.preventDefault();
+                jQuery('html, body').animate({ scrollTop: 0 }, duration);
+                return false;
+            })
+        });
+
+    </script>
+
 </body>
 </html>

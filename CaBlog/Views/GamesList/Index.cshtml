@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CaBlog.Models.GAME>
+
+@{
+    ViewBag.Title = "Kho Games";
+}
+
+@section style{
+    <style>
+        #page-top > header {
+            min-height: 300px;
+        }
+       
+    </style>
+}
+
+@section header{
+    <h3>Kho Games</h3>
+}
+
+<section id="games">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="@Url.Action("Index","GamesList")"><h2 class="section-heading">Game Mới</h2></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="item-thumb">
+                            <div class="overlay">
+                                <div class="overlay-inner">
+                                    <a href="@Url.Content("~/GamesList/Details/" + @item.id)" class="view-detail">Chi Tiết...</a>
+                                </div>
+                            </div> <!-- /.overlay -->
+                            <img src="@item.anhcover" alt="@item.ten">
+                        </div> <!-- /.item-thumb -->
+                        <h3>@item.ten</h3>
+                        <p>@item.noidung</p>
+                    </div> <!-- /.product-item -->
+                </div> <!-- /.col-md-3 -->
+            }
+        </div>
+    </div>
+
+</section>
